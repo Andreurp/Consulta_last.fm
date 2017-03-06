@@ -1,0 +1,31 @@
+{%extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{%block content%}
+    <div class="row">
+        {% crispy form %}
+    </div>
+{%endblock content%}
+
+{% block script %}
+    <script type="text/javascript">
+        var nom = $('#id_nom').val();
+
+        $('#id_nom').typeahead({
+            /*source: [
+                { id: 1, name: 'Toronto' },
+                { id: 2, name: 'Montreal' },
+                { id: 3, name: 'New York' },
+                { id: 4, name: 'Buffalo' },
+                { id: 5, name: 'Boston' },
+                { id: 6, name: 'Columbus' },
+                { id: 7, name: 'Dallas' },
+                { id: 8, name: 'Vancouver' },
+                { id: 9, name: 'Seattle' },
+                { id: 10, name: 'Los Angeles' }
+            ]*/
+
+            ajax: {% url 'artista:rebreDades' nom %}
+        });
+    </script>
+{%endblock%}
