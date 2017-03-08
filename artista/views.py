@@ -50,7 +50,7 @@ def intro_edit_artistes(request, id_artista=None):
     form.helper.form_class = 'form-horizontal col-md-8 col-md-offset-2'
     form.helper.label_class = 'col-lg-3'
     form.helper.field_class = 'col-lg-9'
-    form.helper.add_input(Submit('submit', 'Enviar'))
+    form.helper.add_input(Submit('submit', 'Guardar'))
     return render(request, 'formulariArtista.html', {'form': form, 'artistes':artista})
 
 def rebreDades(request):
