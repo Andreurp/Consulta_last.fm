@@ -53,11 +53,13 @@ def intro_edit_artistes(request, id_artista=None):
     form.helper.add_input(Submit('submit', 'Enviar'))
     return render(request, 'formulariArtista.html', {'form': form, 'artistes':artista})
 
-def rebreDades(request, nom):
-    url = 'http://ws.audioscrobbler.com/2.0/?method=artist.search&artist='+ nom +'&api_key=593ff784c9b080040b22ebc449a9a444&format=json'
+def rebreDades(request):
+    q = request.GET.get('query', '')
+    url = 'http://ws.audioscrobbler.com/2.0/?method=artist.search&artist='+ q +'&api_key=593ff784c9b080040b22ebc449a9a444&format=json'
     req = urllib2.Request(url)
     response = urllib2.urlopen(req)
     ep = json.load(response)
+
 
     artistes = list()
     for a in ep['results']['artistmatches']['artist']:
