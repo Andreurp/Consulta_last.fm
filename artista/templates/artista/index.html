@@ -8,10 +8,17 @@
                 <span class="pull-left"><a type="button" class="btn btn-info btn-lg text-right" href="{% url 'artista:introduir_artistes'%}"><span class="glyphicon glyphicon-plus"></span> Afegir un nou artista favorit</a></span>
             </div>
         </div>
+        <br/>
         {% if artistes %}
-            {% for artista in artistes %}
-                <li>{{ artista.nom }}</li>
-            {% endfor %}
+            <table class="table">
+                {% for artista in artistes %}
+                    <tr>
+                        <td>
+                            <li>{{ artista.nom }}</li>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </table>
         {% endif %}
     </div>
 
