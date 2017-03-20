@@ -55,11 +55,11 @@ def intro_edit_artistes(request, id_artista=None):
 
 def rebreDadesArtista(request):
     q = request.GET.get('query', '')
-    url = 'http://ws.audioscrobbler.com/2.0/?method=album.search&album='+ q +'&api_key=593ff784c9b080040b22ebc449a9a444&format=json'
+    api_key = '593ff784c9b080040b22ebc449a9a444'
+    url = 'http://ws.audioscrobbler.com/2.0/?method=album.search&album='+ q +'&api_key='+ api_key +'&format=json'
     req = urllib2.Request(url)
     response = urllib2.urlopen(req)
     ep = json.load(response)
-
 
     artistes = list()
     for a in ep['results']['albummatches']['album']:
